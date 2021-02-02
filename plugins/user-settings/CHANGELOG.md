@@ -1,5 +1,16 @@
 # @backstage/plugin-user-settings
 
+## 0.2.5
+
+### Patch Changes
+
+- de98c32ed: Keep the Pin Sidebar setting visible on small screens.
+- Updated dependencies [12ece98cd]
+- Updated dependencies [21e624ba9]
+- Updated dependencies [da9f53c60]
+- Updated dependencies [32c95605f]
+  - @backstage/core@0.6.0
+
 ## 0.2.4
 
 ### Patch Changes
