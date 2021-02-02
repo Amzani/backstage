@@ -41,4 +41,24 @@ describe('AzureIntegration', () => {
     expect(integration.type).toBe('azure');
     expect(integration.title).toBe('h.com');
   });
+
+  it('implements resolveUrl', () => {
+    const integration = new AzureIntegration({ host: 'dev.azure.com' } as any);
+
+    expect(
+      integration.resolveUrl(
+        './a.yaml',
+        'https://dev.azure.com/organization/project/_git/repository?path=%2Fcatalog-info.yaml',
+      ),
+    ).toBe(
+      'https://dev.azure.com/organization/project/_git/repository?path=%2Fa.yaml',
+    );
+
+    expect(
+      integration.resolveUrl(
+        'https://absolute.com/path',
+        'https://dev.azure.com/organization/project/_git/repository?path=%2Fcatalog-info.yaml',
+      ),
+    ).toBe('https://absolute.com/path');
+  });
 });

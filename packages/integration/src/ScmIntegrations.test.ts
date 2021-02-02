@@ -73,4 +73,16 @@ describe('ScmIntegrations', () => {
     expect(i.byHost('github.local')).toBe(github);
     expect(i.byHost('gitlab.local')).toBe(gitlab);
   });
+
+  it('can resolveUrl using fallback', () => {
+    expect(
+      i.resolveUrl('../b.yaml', 'https://no-matching-integration.com/x/a.yaml'),
+    ).toBe('https://no-matching-integration.com/b.yaml');
+    expect(
+      i.resolveUrl(
+        'https://absolute.com/path',
+        'https://no-matching-integration.com/x/a.yaml',
+      ),
+    ).toBe('https://absolute.com/path');
+  });
 });
